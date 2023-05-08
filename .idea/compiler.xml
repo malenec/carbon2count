@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="devops-starter" />
+        <module name="ca2_backend" />
+        <module name="carbon2count" />
+        <module name="backend" />
+        <module name="ca2" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="backend" options="-endorseddirs $PROJECT_DIR$/../../../../Israa/Documents/Datamatiker-uddannelsen/3. semester/CA2/ca2_backend/target/endorsed" />
+      <module name="ca2" options="-endorseddirs &quot;C:\Users\sutsk\Dropbox\programming\3. Semester\CA2\ca2\target/endorsed&quot;" />
+      <module name="ca2_backend" options="-endorseddirs $PROJECT_DIR$/target/endorsed" />
+      <module name="carbon2count" options="-endorseddirs $PROJECT_DIR$/target/endorsed" />
+      <module name="devops-starter" options="-endorseddirs $PROJECT_DIR$/../../../../Israa/Documents/Datamatiker-uddannelsen/3. semester/CA2/ca2_backend/target/endorsed" />
+    </option>
+  </component>
+</project>

@@ -66,6 +66,7 @@ public class SetupTestUsers {
 //    user.addQuote(quote);
 //    em.merge(user);
 //    em.getTransaction().commit();
-   
+
+
   }
 }

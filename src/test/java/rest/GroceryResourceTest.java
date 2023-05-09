@@ -1,5 +1,6 @@
 package rest;
 
+import entities.Grocery;
 import entities.User;
 import facades.GroceryFacade;
 import io.restassured.RestAssured;
@@ -10,9 +11,11 @@ import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import utils.EMF_Creator;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 import javax.ws.rs.core.UriBuilder;
@@ -26,6 +29,8 @@ public class GroceryResourceTest {
 
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
+
+    private static Grocery g1, g2;
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
     private static final GroceryFacade FACADE =  GroceryFacade.getGroceryFacade(EMF);
@@ -59,6 +64,23 @@ public class GroceryResourceTest {
         //Don't forget this, if you called its counterpart in @BeforeAll
         EMF_Creator.endREST_TestWithDB();
         httpServer.shutdownNow();
+    }
+
+    @BeforeEach
+    public void setUp() {
+        EntityManager em = emf.createEntityManager();
+        g1 = new Grocery("id1","Ost", "Mælkeprodukter", "kg",  0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 1.2);
+        g2 = new Grocery("id2","OstHaps", "Mælkeprodukter", "kg",  0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 1.8);
+
+        try {
+            em.getTransaction().begin();
+            em.createNamedQuery("Grocery.deleteAllRows").executeUpdate();
+            em.persist(g1);
+            em.persist(g2);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
     }
 
 

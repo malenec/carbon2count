@@ -3,7 +3,6 @@ package entities;
 import javax.persistence.*;
 
 @Entity
-@NamedQuery(name = "Grocery.getAll", query = "SELECT g FROM Grocery g")
 @Table(name = "grocery")
 public class Grocery {
     @Id

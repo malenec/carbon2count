@@ -120,6 +120,7 @@ public class InternalApiFacade {
         EntityManager em = emf.createEntityManager();
         TypedQuery<Quote> query = em.createQuery("SELECT q FROM Quote q", Quote.class);
         List<Quote> quotes = query.getResultList();
+
         return QuoteDTO.getDtos(quotes);
     }
     

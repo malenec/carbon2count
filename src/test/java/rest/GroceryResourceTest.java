@@ -26,7 +26,7 @@ public class GroceryResourceTest {
 
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
-    private static User u1, u2;
+
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
     private static final GroceryFacade FACADE =  GroceryFacade.getGroceryFacade(EMF);
 

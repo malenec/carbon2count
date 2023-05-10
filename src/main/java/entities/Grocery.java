@@ -1,6 +1,8 @@
 package entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "grocery")
@@ -40,9 +42,10 @@ public class Grocery {
     @Column(name = "`Total_kg_CO2-eq/kg`")
     private Double totalKgCo2EqKg;
 
-    @ManyToOne
-    @JoinColumn(name = "grocery_list_id")
-    private GroceryList groceryList;
+
+    @OneToMany(mappedBy = "grocery", orphanRemoval = true)
+    private List<GroceryLine> groceryLines = new ArrayList<>();
+
 
     public Grocery() {
     }
@@ -60,6 +63,7 @@ public class Grocery {
         this.retail = retail;
         this.totalKgCo2EqKg = totalKgCo2EqKg;
     }
+
 
     public Double getTotalKgCo2EqKg() {
         return totalKgCo2EqKg;
@@ -149,28 +153,12 @@ public class Grocery {
         this.idRa500prod = idRa500prod;
     }
 
-    public GroceryList getGroceryList() {
-        return groceryList;
+    public List<GroceryLine> getGroceryLines() {
+        return groceryLines;
     }
 
-    public void setGroceryList(GroceryList groceryList) {
-        this.groceryList = groceryList;
-    }
-
-    @Override
-    public String toString() {
-        return "Grocery{" +
-                "idRa500prod='" + idRa500prod + '\'' +
-                ", name='" + name + '\'' +
-                ", dskCategory='" + dskCategory + '\'' +
-                ", unit='" + unit + '\'' +
-                ", agriculture=" + agriculture +
-                ", iLUC=" + iLUC +
-                ", foodProcessing=" + foodProcessing +
-                ", packaging=" + packaging +
-                ", transport=" + transport +
-                ", retail=" + retail +
-                ", totalKgCo2EqKg=" + totalKgCo2EqKg +
-                '}';
+    public void addGroceryLine(GroceryLine groceryLine) {
+        groceryLines.add(groceryLine);
+        groceryLine.setGrocery(this);
     }
 }

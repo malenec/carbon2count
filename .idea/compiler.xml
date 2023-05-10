@@ -19,7 +19,7 @@
       <module name="backend" options="-endorseddirs $PROJECT_DIR$/../../../../Israa/Documents/Datamatiker-uddannelsen/3. semester/CA2/ca2_backend/target/endorsed" />
       <module name="ca2" options="-endorseddirs &quot;C:\Users\sutsk\Dropbox\programming\3. Semester\CA2\ca2\target/endorsed&quot;" />
       <module name="ca2_backend" options="-endorseddirs $PROJECT_DIR$/target/endorsed" />
-      <module name="carbon2count" options="-endorseddirs C:\Users\silve\OneDrive\Dokumenter\Semester_3\carbon2count\carbon2count\target/endorsed" />
+      <module name="carbon2count" options="-endorseddirs &quot;$PROJECT_DIR$/target/endorsed&quot;" />
       <module name="devops-starter" options="-endorseddirs $PROJECT_DIR$/../../../../Israa/Documents/Datamatiker-uddannelsen/3. semester/CA2/ca2_backend/target/endorsed" />
     </option>
   </component>

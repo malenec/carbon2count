@@ -20,6 +20,7 @@ public class GroceryDTO {
     private Double retail;
     private Double totalKgCo2EqKg;
 
+
     public GroceryDTO(Grocery g) {
         this.idRa500prod = g.getIdRa500prod();
         this.name = g.getName();
@@ -33,6 +34,8 @@ public class GroceryDTO {
         this.retail = g.getRetail();
         this.totalKgCo2EqKg = g.getTotalKgCo2EqKg();
     }
+
+
 
     public static List<GroceryDTO> getDtos(List<Grocery> groceries) {
         return groceries.stream().map(g -> new GroceryDTO(g)).collect(Collectors.toList());

@@ -8,7 +8,7 @@ import javax.persistence.EntityManagerFactory;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class GroceryTest {
+public class GroceryFacadeTest {
 
     private static EntityManagerFactory emf;
     private static GroceryFacade facade;
@@ -19,13 +19,11 @@ public class GroceryTest {
         facade = GroceryFacade.getGroceryFacade(emf);
     }
 
-    public GroceryTest() {
+    public GroceryFacadeTest() {
     }
 
     @Test
     public void testGetAllGroceries() {
-
-
         assertEquals(facade.getAllGroceries().size(), facade.getGroceryCount(), "Expects 499 rows in the database");
     }
 

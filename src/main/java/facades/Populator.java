@@ -8,6 +8,7 @@ package facades;
 import dtos.HobbyDTO;
 import dtos.PersonDTO;
 import dtos.RenameMeDTO;
+import entities.Grocery;
 import entities.Hobby;
 import entities.Person;
 import entities.RenameMe;
@@ -45,6 +46,12 @@ public class Populator {
     }
     
     public static void main(String[] args) {
-        populate();
+        //populate();
+
+        EntityManagerFactory emf = EMF_Creator.createEntityManagerFactory();
+        PersonFacade pf = PersonFacade.getPersonFacade(emf);
+
+
+
     }
 }

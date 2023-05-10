@@ -4,6 +4,7 @@
     <option name="defaultUnitInitialized" value="true" />
     <option name="reverseEngineeringLastDbConnectionId" value="b5a85f58-dafd-4a2c-88cb-f69e32b76fb6" />
     <option name="reLastEntityCreationPackage" value="src/main/java/entities" />
-    <option name="newEntityIdStrategy" />
+    <option name="newEntityIdType" value="Long" />
+    <option name="newEntityIdStrategy" value="Identity" />
   </component>
 </project>

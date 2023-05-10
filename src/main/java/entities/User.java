@@ -10,7 +10,14 @@ import org.mindrot.jbcrypt.BCrypt;
 
 @Entity
 @Table(name = "users")
-@NamedQuery(name = "User.deleteAllRows", query = "DELETE from User")
+
+@NamedQueries({
+        @NamedQuery(name = "User.deleteAllRows", query = "DELETE from User"),
+        @NamedQuery(name = "User.getAllGroceryListsByUsername", query = "SELECT g FROM GroceryList g WHERE g.user.userName = :username"),
+})
+
+
+
 public class User implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -41,6 +48,9 @@ public class User implements Serializable {
           joinColumns=@JoinColumn(name="user_name", referencedColumnName="user_name"),
           inverseJoinColumns=@JoinColumn(name="Quote_id", referencedColumnName="id"))
   private List<Quote> quotes;
+
+  @OneToMany(mappedBy = "user", orphanRemoval = true)
+  private List<GroceryList> groceryLists = new ArrayList<>();
 
   public List<String> getRolesAsStrings() {
     if (roleList.isEmpty()) {
@@ -117,6 +127,15 @@ public class User implements Serializable {
   public void removeQuote(Quote quote) {
     this.quotes.remove(quote);
     quote.removeUser(this);
+  }
+
+  public List<GroceryList> getGroceryLists() {
+    return groceryLists;
+  }
+
+  public void addGroceryList(GroceryList groceryList) {
+    this.groceryLists.add(groceryList);
+    groceryList.setUser(this);
   }
 
   @Override

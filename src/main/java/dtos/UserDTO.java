@@ -10,12 +10,15 @@ public class UserDTO {
     private String username;
     private int age;
     private List<QuoteDTO> quotes;
+    private List<GroceryListDTO> groceryLists;
 
     public UserDTO(User u) {
         this.username = u.getUserName();
         this.age = u.getAge();
         if(u.getQuotes() != null)
             this.quotes = u.getQuotes().stream().map(q -> new QuoteDTO(q)).collect(Collectors.toList());
+        if(u.getGroceryLists() != null)
+            this.groceryLists = u.getGroceryLists().stream().map(g -> new GroceryListDTO(g)).collect(Collectors.toList());
     }
 
     public static List<UserDTO> getDtos(List<User> Users) {
@@ -42,12 +45,21 @@ public class UserDTO {
         return quotes;
     }
 
+    public List<GroceryListDTO> getGroceryLists() {
+        return groceryLists;
+    }
+
+    public void setGroceryLists(List<GroceryListDTO> groceryLists) {
+        this.groceryLists = groceryLists;
+    }
+
     @Override
     public String toString() {
         return "UserDTO{" +
                 "username='" + username + '\'' +
                 ", age=" + age +
                 ", quotes=" + quotes +
+                ", groceryLists=" + groceryLists +
                 '}';
     }
 }

@@ -10,6 +10,7 @@
         <class>entities.Role</class>
         <class>entities.User</class>
         <class>entities.Grocery</class>
+        <class>entities.GroceryList</class>
         <!--    <class>entities.RenameMe</class>-->
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>

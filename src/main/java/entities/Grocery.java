@@ -40,6 +40,10 @@ public class Grocery {
     @Column(name = "`Total_kg_CO2-eq/kg`")
     private Double totalKgCo2EqKg;
 
+    @ManyToOne
+    @JoinColumn(name = "grocery_list_id")
+    private GroceryList groceryList;
+
     public Grocery() {
     }
 
@@ -145,7 +149,13 @@ public class Grocery {
         this.idRa500prod = idRa500prod;
     }
 
+    public GroceryList getGroceryList() {
+        return groceryList;
+    }
 
+    public void setGroceryList(GroceryList groceryList) {
+        this.groceryList = groceryList;
+    }
 
     @Override
     public String toString() {

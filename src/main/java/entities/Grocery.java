@@ -42,10 +42,8 @@ public class Grocery {
     @Column(name = "`Total_kg_CO2-eq/kg`")
     private Double totalKgCo2EqKg;
 
-
     @OneToMany(mappedBy = "grocery", orphanRemoval = true)
     private List<GroceryLine> groceryLines = new ArrayList<>();
-
 
     public Grocery() {
     }
@@ -63,7 +61,6 @@ public class Grocery {
         this.retail = retail;
         this.totalKgCo2EqKg = totalKgCo2EqKg;
     }
-
 
     public Double getTotalKgCo2EqKg() {
         return totalKgCo2EqKg;

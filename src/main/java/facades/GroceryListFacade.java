@@ -37,8 +37,10 @@ public class GroceryListFacade {
         GroceryList groceryList = new GroceryList();
 
         groceryListDTO.getGroceryLineDTOs().forEach(groceryLineDTO -> {
+
             Grocery grocery = em.find(Grocery.class, groceryLineDTO.getGroceryId());
             GroceryLine groceryLine = new GroceryLine();
+            groceryLine.setGroceryQuantity(groceryLineDTO.getGroceryQuantity());
             groceryLine.setGrocery(grocery);
             groceryList.addGroceryLine(groceryLine);
         });
@@ -47,7 +49,6 @@ public class GroceryListFacade {
 
         try {
             em.getTransaction().begin();
-            em.persist(groceryList);
             em.merge(user);
             em.getTransaction().commit();
         } finally {

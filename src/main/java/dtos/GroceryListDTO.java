@@ -4,6 +4,7 @@ package dtos;
 import entities.GroceryList;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,9 +14,11 @@ public class GroceryListDTO {
     private Long groceryListId;
     private LocalDateTime created;
     private String userName;
-    private List<GroceryLineDTO> groceryLineDTOs;
+    private List<GroceryLineDTO> groceryLineDTOs = new ArrayList<>();
 //    private List<GroceryDTO> groceries;
 
+    public GroceryListDTO() {
+    }
 
     //denne konstruktor bruges til at sende objektet i db første gang
     public GroceryListDTO(List<GroceryLineDTO> groceryLineDTOs) {
@@ -67,6 +70,10 @@ public class GroceryListDTO {
 
     public void setGroceryLineDTOs(List<GroceryLineDTO> groceryLineDTOs) {
         this.groceryLineDTOs = groceryLineDTOs;
+    }
+
+    public void addGroceryLineDTO(GroceryLineDTO groceryLineDTO){
+        this.groceryLineDTOs.add(groceryLineDTO);
     }
 
     @Override

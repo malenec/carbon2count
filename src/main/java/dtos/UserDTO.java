@@ -10,6 +10,7 @@ public class UserDTO {
     private String username;
     private int age;
     private List<QuoteDTO> quotes;
+
     private List<GroceryListDTO> groceryLists;
 
     public UserDTO(User u) {

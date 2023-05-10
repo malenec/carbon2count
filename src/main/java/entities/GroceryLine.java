@@ -24,7 +24,6 @@ public class GroceryLine {
     @Column(name = "grocery_quantity")
     private Long groceryQuantity;
 
-
     public GroceryLine() {
     }
 

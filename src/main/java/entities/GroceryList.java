@@ -22,8 +22,6 @@ public class GroceryList {
     @Column(name = "created", updatable = false)
     private LocalDateTime created;
 
-
-
     @OneToMany(mappedBy = "groceryList", orphanRemoval = true)
     private List<GroceryLine> groceryLines = new ArrayList<>();
 

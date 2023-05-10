@@ -161,4 +161,22 @@ public class Grocery {
         groceryLines.add(groceryLine);
         groceryLine.setGrocery(this);
     }
+
+    @Override
+    public String toString() {
+        return "Grocery{" +
+                "idRa500prod='" + idRa500prod + '\'' +
+                ", name='" + name + '\'' +
+                ", dskCategory='" + dskCategory + '\'' +
+                ", unit='" + unit + '\'' +
+                ", agriculture=" + agriculture +
+                ", iLUC=" + iLUC +
+                ", foodProcessing=" + foodProcessing +
+                ", packaging=" + packaging +
+                ", transport=" + transport +
+                ", retail=" + retail +
+                ", totalKgCo2EqKg=" + totalKgCo2EqKg +
+                ", groceryLines=" + groceryLines +
+                '}';
+    }
 }

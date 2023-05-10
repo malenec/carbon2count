@@ -1,51 +1,48 @@
 package dtos;
 
+
 import entities.GroceryList;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 public class GroceryListDTO {
 
-    private Long id;
-    private String userName;
+    private Long groceryListId;
     private LocalDateTime created;
-    private List<GroceryDTO> groceries;
+    private String userName;
+    private List<GroceryLineDTO> groceryLineDTOs;
+//    private List<GroceryDTO> groceries;
+
 
     //denne konstruktor bruges til at sende objektet i db første gang
-    public GroceryListDTO(String userName, List<GroceryDTO> groceries) {
-        this.userName = userName;
-        this.groceries = groceries;
+    public GroceryListDTO(List<GroceryLineDTO> groceryLineDTOs) {
+        this.groceryLineDTOs = groceryLineDTOs;
     }
 
     //denne konstruktor bruges til at hente objektet op fra db
     public GroceryListDTO(GroceryList groceryList) {
         this.userName = groceryList.getUser().getUserName();
         this.created = groceryList.getCreated();
-        if(groceryList.getGroceries() != null)
-            this.groceries = groceryList.getGroceries().stream().map(g -> new GroceryDTO(g)).collect(Collectors.toList());
+        if(groceryList.getGroceryLines() != null){
+            this.groceryLineDTOs = GroceryLineDTO.getDtos(groceryList.getGroceryLines());
+        }
     }
 
     //denne metode bruges til at hente alle lister til en given user op fra db
     public static List<GroceryListDTO> getDtos(List<GroceryList> groceryLists){
         return groceryLists.stream().map(groceryList->new GroceryListDTO(groceryList)).collect(Collectors.toList());
+  }
+
+
+    public Long getGroceryListId() {
+        return groceryListId;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setGroceryListId(Long groceryListId) {
+        this.groceryListId = groceryListId;
     }
 
     public LocalDateTime getCreated() {
@@ -56,21 +53,29 @@ public class GroceryListDTO {
         this.created = created;
     }
 
-    public List<GroceryDTO> getGroceries() {
-        return groceries;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setGroceries(List<GroceryDTO> groceries) {
-        this.groceries = groceries;
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public List<GroceryLineDTO> getGroceryLineDTOs() {
+        return groceryLineDTOs;
+    }
+
+    public void setGroceryLineDTOs(List<GroceryLineDTO> groceryLineDTOs) {
+        this.groceryLineDTOs = groceryLineDTOs;
     }
 
     @Override
     public String toString() {
         return "GroceryListDTO{" +
-                "id=" + id +
-                ", userName='" + userName + '\'' +
+                "groceryListId=" + groceryListId +
                 ", created=" + created +
-                ", groceries=" + groceries +
+                ", userName='" + userName + '\'' +
+                ", groceryLineDTOs=" + groceryLineDTOs +
                 '}';
     }
 }

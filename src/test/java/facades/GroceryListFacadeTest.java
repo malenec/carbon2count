@@ -1,9 +1,6 @@
 package facades;
 
-import dtos.GroceryDTO;
-import dtos.GroceryListDTO;
-import dtos.QuoteDTO;
-import dtos.UserDTO;
+import dtos.*;
 import entities.Grocery;
 import entities.GroceryList;
 import entities.Quote;
@@ -27,8 +24,10 @@ public class GroceryListFacadeTest {
 
     private static EntityManagerFactory emf;
     private static GroceryListFacade facade;
-    User user = new User("user", "test123");
+    User user1 = new User("user", "test123");
     private static Grocery g1, g2;
+    private static GroceryDTO groceryDTO1, groceryDTO2;
+    private static UserDTO userDTO1;
     private static List<GroceryDTO> listWithGrocieries = new ArrayList<>();
 
 
@@ -53,25 +52,37 @@ public class GroceryListFacadeTest {
            em.createNamedQuery("Grocery.deleteAllRows").executeUpdate();
            em.persist(g1);
            em.persist(g2);
-           em.persist(user);
+           em.persist(user1);
            em.getTransaction().commit();
         } finally {
             em.close();
         }
-        GroceryDTO groceryDTO1 = new GroceryDTO(g1);
-        GroceryDTO groceryDTO2 = new GroceryDTO(g2);
+        groceryDTO1 = new GroceryDTO(g1);
+        groceryDTO2 = new GroceryDTO(g2);
 
-        listWithGrocieries.add(groceryDTO1);
-        listWithGrocieries.add(groceryDTO2);
+        userDTO1 = new UserDTO(user1);
+
+
+//        listWithGrocieries.add(groceryDTO1);
+//        listWithGrocieries.add(groceryDTO2);
     }
 
     @Test
     void createGroceryList() {
-        GroceryDTO expectedGrocery = listWithGrocieries.get(0);
-        GroceryListDTO groceryListDTO = new GroceryListDTO(user.getUserName(), listWithGrocieries);
-        GroceryListDTO facadeGroceryList = facade.createGroceryList(groceryListDTO);
 
-        Boolean isInList = facadeGroceryList.getGroceries().contains(expectedGrocery);
+        GroceryLineDTO groceryLineDTO1 = new GroceryLineDTO("Ra00468", 200L);
+        GroceryLineDTO groceryLineDTO2 = new GroceryLineDTO("Ra00469", 400L);
+
+        List<GroceryLineDTO> groceryLineDTOList = new ArrayList<>();
+
+        groceryLineDTOList.add(groceryLineDTO1);
+        groceryLineDTOList.add(groceryLineDTO2);
+
+        GroceryListDTO groceryListDTO = new GroceryListDTO(groceryLineDTOList);
+
+        GroceryListDTO facadeGroceryList = facade.createGroceryList(userDTO1, groceryListDTO);
+
+        Boolean isInList = facadeGroceryList.getGroceryLineDTOs().contains(groceryDTO1.getIdRa500prod());
 
         assertEquals(true, isInList);
     }

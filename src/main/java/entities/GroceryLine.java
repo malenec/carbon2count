@@ -59,4 +59,14 @@ public class GroceryLine {
     public void setGroceryQuantity(Long groceryQuantity) {
         this.groceryQuantity = groceryQuantity;
     }
+
+    @Override
+    public String toString() {
+        return "GroceryLine{" +
+                "id=" + id +
+                ", groceryList=" + groceryList +
+                ", grocery=" + grocery +
+                ", groceryQuantity=" + groceryQuantity +
+                '}';
+    }
 }

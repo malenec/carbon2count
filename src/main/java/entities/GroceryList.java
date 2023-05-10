@@ -22,8 +22,14 @@ public class GroceryList {
     @Column(name = "created", updatable = false)
     private LocalDateTime created;
 
+
+
     @OneToMany(mappedBy = "groceryList", orphanRemoval = true)
     private List<GroceryLine> groceryLines = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "user_name")
+    private User user;
 
     @PrePersist
     public void onPersist() {
@@ -54,6 +60,21 @@ public class GroceryList {
         return created;
     }
 
+    public User getUser() {
+        return user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
 
+    @Override
+    public String toString() {
+        return "GroceryList{" +
+                "id=" + id +
+                ", created=" + created +
+                ", groceryLines=" + groceryLines +
+                ", user=" + user +
+                '}';
+    }
 }

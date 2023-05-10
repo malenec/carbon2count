@@ -146,6 +146,7 @@ public class User implements Serializable {
             ", age=" + age +
             ", roleList=" + roleList +
             ", quotes=" + quotes +
+            ", groceryLists=" + groceryLists +
             '}';
   }
 }

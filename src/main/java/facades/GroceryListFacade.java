@@ -3,10 +3,8 @@ package facades;
 import dtos.GroceryDTO;
 import dtos.GroceryListDTO;
 import dtos.RenameMeDTO;
-import entities.Grocery;
-import entities.GroceryList;
-import entities.RenameMe;
-import entities.User;
+import dtos.UserDTO;
+import entities.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -30,29 +28,19 @@ public class GroceryListFacade {
         return emf.createEntityManager();
     }
 
-    public RenameMeDTO create(RenameMeDTO rm){
-        RenameMe rme = new RenameMe(rm.getDummyStr1(), rm.getDummyStr2());
-        EntityManager em = getEntityManager();
-        try {
-            em.getTransaction().begin();
-            em.persist(rme);
-            em.getTransaction().commit();
-        } finally {
-            em.close();
-        }
-        return new RenameMeDTO(rme);
-    }
 
-    public GroceryListDTO createGroceryList(GroceryListDTO groceryListDTO) {
+    public GroceryListDTO createGroceryList(UserDTO userDTO, GroceryListDTO groceryListDTO) {
 
         EntityManager em = emf.createEntityManager();
-        User user = em.find(User.class, groceryListDTO.getUserName());
+        User user = em.find(User.class, userDTO.getUsername());
 
         GroceryList groceryList = new GroceryList();
 
-        groceryListDTO.getGroceries().forEach(gDto -> {
-            Grocery grocery = em.find(Grocery.class, gDto.getIdRa500prod());
-            groceryList.addGrocery(grocery);
+        groceryListDTO.getGroceryLineDTOs().forEach(groceryLineDTO -> {
+            Grocery grocery = em.find(Grocery.class, groceryLineDTO.getGroceryId());
+            GroceryLine groceryLine = new GroceryLine();
+            groceryLine.setGrocery(grocery);
+            groceryList.addGroceryLine(groceryLine);
         });
 
         user.addGroceryList(groceryList);

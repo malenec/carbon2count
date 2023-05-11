@@ -25,7 +25,7 @@ public class GroceryList {
     @OneToMany(mappedBy = "groceryList", orphanRemoval = true)
     private List<GroceryLine> groceryLines = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "user_name")
     private User user;
 

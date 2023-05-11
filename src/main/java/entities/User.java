@@ -14,6 +14,7 @@ import org.mindrot.jbcrypt.BCrypt;
 @NamedQueries({
         @NamedQuery(name = "User.deleteAllRows", query = "DELETE from User"),
         @NamedQuery(name = "User.getAllGroceryListsByUsername", query = "SELECT g FROM GroceryList g WHERE g.user.userName = :username"),
+        @NamedQuery(name = "User.getUserByUsername", query = "select u from User u WHERE u.userName = :username")
 })
 
 

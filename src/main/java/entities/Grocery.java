@@ -173,7 +173,7 @@ public class Grocery {
                 ", transport=" + transport +
                 ", retail=" + retail +
                 ", totalKgCo2EqKg=" + totalKgCo2EqKg +
-                ", groceryLines=" + groceryLines +
+                ", groceryLines=" + //groceryLines +
                 '}';
     }
 }

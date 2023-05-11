@@ -55,4 +55,22 @@ GET http://localhost:8080/backend/api/ext
 
 ###
 
-GET http://localhost:8080/carbon2count/api/produce
+GET http://localhost:8080/carbon2count/api/produce/count
+
+###
+
+POST http://localhost:8080/carbon2count/api/grocerylist/create/user
+Content-Type: application/json
+
+{
+  "groceryLineDTOs": [
+    {
+      "groceryId": "Ra00055",
+      "groceryQuantity": 450
+    },
+    {
+      "groceryId": "Ra00081",
+      "groceryQuantity": 3000
+    }
+  ]
+}

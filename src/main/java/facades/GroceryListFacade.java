@@ -58,6 +58,11 @@ public class GroceryListFacade {
         return new GroceryListDTO(groceryList);
     }
 
+    public User getUser(String username){
+        EntityManager em = emf.createEntityManager();
+        return em.find(User.class, username);
+    }
+
 //    public static List<GroceryListDTO> getAllGroceriesLists(){
 //        EntityManager em = emf.createEntityManager();
 //        TypedQuery<Grocery> grocery = em.createQuery("SELECT g FROM Grocery g", Grocery.class);

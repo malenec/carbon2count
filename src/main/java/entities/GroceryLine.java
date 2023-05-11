@@ -6,6 +6,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "grocery_line")
+@NamedQueries({
+        @NamedQuery(name = "GroceryLine.deleteAllRows", query = "delete from GroceryLine g")
+})
 public class GroceryLine {
 
     @Id
@@ -20,6 +23,7 @@ public class GroceryLine {
     @ManyToOne
     @JoinColumn(name = "grocery_id")
     private Grocery grocery;
+
 
     @Column(name = "grocery_quantity")
     private Long groceryQuantity;

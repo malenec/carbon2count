@@ -22,6 +22,8 @@ public class UserDTO {
             this.groceryLists = u.getGroceryLists().stream().map(g -> new GroceryListDTO(g)).collect(Collectors.toList());
     }
 
+
+
     public static List<UserDTO> getDtos(List<User> Users) {
         return Users.stream().map(p -> new UserDTO(p)).collect(Collectors.toList());
     }

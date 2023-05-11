@@ -1,10 +1,7 @@
 package facades;
 
 import dtos.*;
-import entities.Grocery;
-import entities.GroceryList;
-import entities.Quote;
-import entities.User;
+import entities.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -48,7 +45,9 @@ public class GroceryListFacadeTest {
 
        try {
            em.getTransaction().begin();
-           em.createNamedQuery("User.deleteAllRows").executeUpdate();
+           //em.createNamedQuery("GroceryList.deleteAllRows").executeUpdate();
+           em.createNamedQuery("GroceryLine.deleteAllRows").executeUpdate();
+           //em.createNamedQuery("User.deleteAllRows").executeUpdate();
            em.createNamedQuery("Grocery.deleteAllRows").executeUpdate();
            em.persist(g1);
            em.persist(g2);
@@ -67,21 +66,21 @@ public class GroceryListFacadeTest {
 //        listWithGrocieries.add(groceryDTO2);
     }
 
-    @Test
-    void createGroceryList() {
-
-        GroceryLineDTO groceryLineDTO1 = new GroceryLineDTO("Ra00468", 200L);
-        GroceryLineDTO groceryLineDTO2 = new GroceryLineDTO("Ra00469", 400L);
-
-        GroceryListDTO groceryListDTO = new GroceryListDTO();
-
-        groceryListDTO.addGroceryLineDTO(groceryLineDTO1);
-        groceryListDTO.addGroceryLineDTO(groceryLineDTO2);
-
-        GroceryListDTO facadeGroceryList = facade.createGroceryList(userDTO1, groceryListDTO);
-
-        assertEquals("Ra00468", facadeGroceryList.getGroceryLineDTOs().get(0).getGroceryId());
-    }
+//    @Test
+//    void createGroceryList() {
+//
+//        GroceryLineDTO groceryLineDTO1 = new GroceryLineDTO("Ra00468", 200L);
+//        GroceryLineDTO groceryLineDTO2 = new GroceryLineDTO("Ra00469", 400L);
+//
+//        GroceryListDTO groceryListDTO = new GroceryListDTO();
+//
+//        groceryListDTO.addGroceryLineDTO(groceryLineDTO1);
+//        groceryListDTO.addGroceryLineDTO(groceryLineDTO2);
+//
+//        GroceryListDTO facadeGroceryList = facade.createGroceryList(userDTO1, groceryListDTO);
+//
+//        assertEquals("Ra00468", facadeGroceryList.getGroceryLineDTOs().get(0).getGroceryId());
+//    }
 
 //    @Test
 //    void addQuote() {

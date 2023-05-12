@@ -68,6 +68,8 @@ public class EMF_Creator {
         } else {
             System.out.println("Using the DEV database via persistence-unit --> pu ");
         }
+        System.out.println("This is supposed to be the puName: " + puName);
+        System.out.println(System.getProperty("IS_INTEGRATION_TEST_WITH_DB"));
         EntityManagerFactory emf = null;
         try {
          emf =  Persistence.createEntityManagerFactory(puName, null);

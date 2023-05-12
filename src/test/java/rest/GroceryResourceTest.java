@@ -1,7 +1,6 @@
 package rest;
 
 import entities.Grocery;
-import facades.GroceryFacade;
 import io.restassured.RestAssured;
 import io.restassured.parsing.Parser;
 import org.glassfish.grizzly.http.server.HttpServer;
@@ -20,7 +19,6 @@ import javax.ws.rs.core.UriBuilder;
 import java.net.URI;
 
 import static io.restassured.RestAssured.given;
-
 
 public class GroceryResourceTest {
 

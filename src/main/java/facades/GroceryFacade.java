@@ -1,9 +1,7 @@
 package facades;
 
 import dtos.GroceryDTO;
-import dtos.QuoteDTO;
 import entities.Grocery;
-import entities.Quote;
 import utils.EMF_Creator;
 
 import javax.persistence.EntityManager;

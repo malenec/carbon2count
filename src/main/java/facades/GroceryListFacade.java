@@ -1,15 +1,11 @@
 package facades;
 
-import dtos.GroceryDTO;
 import dtos.GroceryListDTO;
-import dtos.RenameMeDTO;
 import dtos.UserDTO;
 import entities.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.TypedQuery;
-import java.util.List;
 
 public class GroceryListFacade {
 

@@ -17,8 +17,6 @@ import org.mindrot.jbcrypt.BCrypt;
         @NamedQuery(name = "User.getUserByUsername", query = "select u from User u WHERE u.userName = :username")
 })
 
-
-
 public class User implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -33,22 +31,11 @@ public class User implements Serializable {
   @Column(name = "user_pass")
   private String userPass;
 
-  @Column(name = "age")
-  private int age;
-
   @JoinTable(name = "user_roles", joinColumns = {
     @JoinColumn(name = "user_name", referencedColumnName = "user_name")}, inverseJoinColumns = {
     @JoinColumn(name = "role_name", referencedColumnName = "role_name")})
   @ManyToMany
   private List<Role> roleList = new ArrayList<>();
-
-
-  @ManyToMany
-  @JoinTable(
-          name="User_Quote",
-          joinColumns=@JoinColumn(name="user_name", referencedColumnName="user_name"),
-          inverseJoinColumns=@JoinColumn(name="Quote_id", referencedColumnName="id"))
-  private List<Quote> quotes;
 
   @OneToMany(mappedBy = "user", orphanRemoval = true)
   private List<GroceryList> groceryLists = new ArrayList<>();
@@ -74,10 +61,6 @@ public class User implements Serializable {
   public User(String userName, String userPass) {
     this.userName = userName;
     this.userPass = BCrypt.hashpw(userPass, BCrypt.gensalt());
-  }
-
-  public void setQuotes(List<Quote> quotes) {
-    this.quotes = quotes;
   }
 
   public String getUserName() {
@@ -108,28 +91,6 @@ public class User implements Serializable {
     roleList.add(userRole);
   }
 
-  public int getAge() {
-    return age;
-  }
-
-  public void setAge(int age) {
-    this.age = age;
-  }
-
-  public List<Quote> getQuotes() {
-    return quotes;
-  }
-
-  public void addQuote(Quote quote) {
-    this.quotes.add(quote);
-    quote.addUser(this);
-  }
-
-  public void removeQuote(Quote quote) {
-    this.quotes.remove(quote);
-    quote.removeUser(this);
-  }
-
   public List<GroceryList> getGroceryLists() {
     return groceryLists;
   }
@@ -144,9 +105,7 @@ public class User implements Serializable {
     return "User{" +
             "userName='" + userName + '\'' +
             ", userPass='" + userPass + '\'' +
-            ", age=" + age +
             ", roleList=" + roleList +
-            ", quotes=" + quotes +
             ", groceryLists=" + groceryLists +
             '}';
   }

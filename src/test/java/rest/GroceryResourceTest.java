@@ -1,7 +1,6 @@
 package rest;
 
 import entities.Grocery;
-import entities.User;
 import facades.GroceryFacade;
 import io.restassured.RestAssured;
 import io.restassured.parsing.Parser;
@@ -17,15 +16,13 @@ import utils.EMF_Creator;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
 import javax.ws.rs.core.UriBuilder;
 import java.net.URI;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
+
 
 public class GroceryResourceTest {
-    @PersistenceUnit(unitName = "puTest")
 
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";

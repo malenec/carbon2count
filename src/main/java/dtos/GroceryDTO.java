@@ -1,9 +1,7 @@
 package dtos;
 
 import entities.Grocery;
-import entities.Quote;
 
-import javax.persistence.Column;
 import java.util.List;
 import java.util.stream.Collectors;
 

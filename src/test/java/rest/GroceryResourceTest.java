@@ -25,11 +25,11 @@ public class GroceryResourceTest {
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
 
-    private static Grocery g1, g2;
-
     static final URI BASE_URI = UriBuilder.fromUri(SERVER_URL).port(SERVER_PORT).build();
     private static HttpServer httpServer;
     private static EntityManagerFactory emf;
+
+    private static Grocery g1, g2;
 
     static HttpServer startServer() {
         ResourceConfig rc = ResourceConfig.forApplication(new ApplicationConfig());
@@ -51,8 +51,6 @@ public class GroceryResourceTest {
 
     @AfterAll
     public static void closeTestServer() {
-        //System.in.read();
-
         //Don't forget this, if you called its counterpart in @BeforeAll
         EMF_Creator.endREST_TestWithDB();
         httpServer.shutdownNow();
@@ -83,7 +81,5 @@ public class GroceryResourceTest {
                 get("/produce").
                 then().
                 statusCode(HttpStatus.OK_200.getStatusCode());
-
     }
-
 }

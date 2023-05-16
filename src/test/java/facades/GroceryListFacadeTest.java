@@ -11,9 +11,6 @@ import utils.EMF_Creator;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GroceryListFacadeTest {
@@ -22,9 +19,7 @@ public class GroceryListFacadeTest {
     private static GroceryListFacade facade;
     User user1;
     private static Grocery g1, g2;
-    private static GroceryDTO groceryDTO1, groceryDTO2;
     private static UserDTO userDTO1;
-    private static List<GroceryDTO> listWithGrocieries = new ArrayList<>();
     private static GroceryList groceryList1, groceryList2, groceryList3;
 
     @BeforeAll
@@ -59,8 +54,6 @@ public class GroceryListFacadeTest {
             em.close();
 
         }
-        groceryDTO1 = new GroceryDTO(g1);
-        groceryDTO2 = new GroceryDTO(g2);
 
         userDTO1 = new UserDTO(user1);
 

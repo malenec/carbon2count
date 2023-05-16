@@ -66,12 +66,12 @@ Content-Type: application/json
 {
   "groceryLineDTOs": [
     {
-      "groceryId": "Ra00055",
-      "groceryQuantity": 20
+      "groceryId": "Ra00070",
+      "groceryQuantity":15
     },
     {
-      "groceryId": "Ra00081",
-      "groceryQuantity": 3000
+      "groceryId": "Ra00155",
+      "groceryQuantity": 30
     }
   ]
 }

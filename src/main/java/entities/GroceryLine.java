@@ -7,7 +7,8 @@ import java.util.List;
 @Entity
 @Table(name = "grocery_line")
 @NamedQueries({
-        @NamedQuery(name = "GroceryLine.deleteAllRows", query = "delete from GroceryLine g")
+        @NamedQuery(name = "GroceryLine.deleteAllRows", query = "delete from GroceryLine g"),
+        @NamedQuery(name = "User.getAllGroceryLinesByGroceryListId", query = "SELECT g FROM GroceryLine g WHERE g.groceryList.id = :id")
 })
 public class GroceryLine {
 

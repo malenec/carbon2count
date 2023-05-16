@@ -6,6 +6,9 @@ import entities.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.TypedQuery;
+import java.util.Collection;
+import java.util.List;
 
 public class GroceryListFacade {
 
@@ -57,6 +60,14 @@ public class GroceryListFacade {
     public User getUser(String username){
         EntityManager em = emf.createEntityManager();
         return em.find(User.class, username);
+    }
+
+    public List<GroceryListDTO> getAllGroceryListsByUsername(String username) {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<GroceryList> groceryLists = em.createQuery("SELECT g FROM GroceryList g WHERE g.user.userName = :username", GroceryList.class);
+        groceryLists.setParameter("username", username);
+        List<GroceryList> groceryLists1 = groceryLists.getResultList();
+        return GroceryListDTO.getDtos(groceryLists1);
     }
 
 //    public static List<GroceryListDTO> getAllGroceriesLists(){

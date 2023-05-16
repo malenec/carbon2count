@@ -60,6 +60,22 @@ public class GroceryListResource {
         }
     }
 
+    @GET
+    @Path("all/{username}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllGroceryListsByUsername(@PathParam("username") String username) {
+
+        try {
+            List<GroceryListDTO> groceryListDTOList = FACADE.getAllGroceryListsByUsername(username);
+            return Response.ok().entity(groceryListDTOList).build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("Failed to get grocery lists. Error: " + e.getMessage())
+                    .build();
+        }
+    }
+
 //    @POST
 //    @Path("create")
 //    @Produces(MediaType.APPLICATION_JSON)

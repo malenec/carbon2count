@@ -31,7 +31,7 @@ public class GroceryList {
 
     @PrePersist
     public void onPersist() {
-        created = LocalDateTime.now(ZoneId.of("GMT+04:00"));
+        created = LocalDateTime.now(ZoneId.of("GMT+02:00"));
     }
 
     public GroceryList() {

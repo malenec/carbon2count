@@ -105,7 +105,7 @@ public class ChartFacade {
                 + "\"width\": 500,"
                 + "\"height\": 300,"
                 + "\"format\": \"png\","
-                + "\"chart\": \"{type:'line',data:{labels:" + kategorier + ",datasets:[{label:'Samlet CO2 udledning',data:" + co2 + "}]},options:{scales:{yAxes:[{ticks:{callback:function(value){returnvalue+'kg CO2';}}}]}}}\""
+                + "\"chart\": \"{type:'line',data:{labels:" + kategorier + ",datasets:[{label:'Samlet CO2 udledning',data:" + co2 + "}]},options:{scales:{yAxes:[{ticks:{callback:function(value){return+value+'kg CO2';}}}]}}}\""
                 + "}";
 
 //        String requestBody = "{\"backgroundColor\": \"transparent\","

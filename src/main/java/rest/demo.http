@@ -79,3 +79,34 @@ Content-Type: application/json
 ###
 
 GET http://localhost:8080/carbon2count/api/grocerylist/all/user
+
+###
+
+GET http://localhost:8080/carbon2count/api/chart
+
+###
+
+POST https://quickchart.io/chart
+Content-Type: application/json
+
+{
+  "backgroundColor": "transparent",
+  "width": 500,
+  "height": 300,
+  "format": "png",
+  "chart": "{type:'bar',data:{labels:['January','February','March','April','May'],datasets:[{label:'Dogs',data:[50,60,70,180,190]}]},options:{scales:{yAxes:[{ticks:{callback:function(value){return'$'+value;}}}]}}}"
+}
+
+###
+
+POST http://localhost:8080/carbon2count/api/chart
+Content-Type: application/json
+
+{
+  "backgroundColor": "transparent",
+  "width": 500,
+  "height": 300,
+  "format": "png",
+  "chart": "{type:'bar',data:{labels:['January','February','March','April','May'],datasets:[{label:'Dogs',data:[50,60,70,180,190]}]},options:{scales:{yAxes:[{ticks:{callback:function(value){return'$'+value;}}}]}}}"
+}
+

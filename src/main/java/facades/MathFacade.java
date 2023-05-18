@@ -6,7 +6,6 @@ import com.google.gson.JsonObject;
 import dtos.GroceryLineDTO;
 import dtos.GroceryListDTO;
 import dtos.MathDTO;
-import entities.GroceryList;
 import utils.EMF_Creator;
 
 import javax.persistence.EntityManager;
@@ -15,8 +14,6 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +44,7 @@ public class MathFacade {
         return emf.createEntityManager();
     }
 
-    public static ArrayList<MathDTO> add(List<GroceryListDTO> groceryListDTOS) throws Exception {
+    public static ArrayList<MathDTO> createMathDTOS(List<GroceryListDTO> groceryListDTOS) throws Exception {
 
         ArrayList<MathDTO> mathDTOS = new ArrayList<>();
         for (GroceryListDTO groceryListDTO: groceryListDTOS) {
@@ -112,7 +109,7 @@ public class MathFacade {
         GroceryListFacade groceryListFacade = GroceryListFacade.getGroceryListFacade(emf);
 
 
-        ArrayList<MathDTO> mdto = add(groceryListFacade.getAllGroceryListsByUsername("user"));
+        ArrayList<MathDTO> mdto = createMathDTOS(groceryListFacade.getAllGroceryListsByUsername("user"));
 
         System.out.println("test");
         System.out.println(mdto);

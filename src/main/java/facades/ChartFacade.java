@@ -2,6 +2,7 @@ package facades;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import dtos.MathDTO;
 import utils.EMF_Creator;
 
@@ -41,6 +42,31 @@ public class ChartFacade {
 
     private EntityManager getEntityManager() {
         return emf.createEntityManager();
+    }
+
+
+    public static String getHttpResponse(String url) throws Exception {
+        System.out.println("Do I pass this point?");
+        HttpClient client = HttpClient.newHttpClient();
+        System.out.println("What about this point?");
+        HttpRequest request = HttpRequest.newBuilder()
+                .header("accept", "application/json")
+                .uri(URI.create(url))
+                .build();
+        System.out.println("Am I passed this point?");
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        // {"data":{"mal_id":18771,"url":"https:\/\/myanimelist.net\/anime\/18771\/Gifuu_Doudou__Kanetsugu_to_Keiji","images":{"jpg":{"image_url":"https:\/\/cdn.myanimelist.net\/images\/anime\/5\/51427.jpg",
+        System.out.println("How about this point?");
+        System.out.println(response.body().toString());
+        System.out.println("Did I get passed this point?");
+//        DataDTO dataDTO = new Gson().fromJson(response.body(), DataDTO.class);
+        System.out.println("And this point?");
+//        JsonObject jo = dataDTO.data;
+        System.out.println("Last point?");
+        return response.body();
+    }
+    class DataDTO{
+        public JsonObject data;
     }
 
     public static String postHttpResponse(String url, String requestBody) throws Exception {

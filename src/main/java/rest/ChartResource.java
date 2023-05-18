@@ -20,16 +20,14 @@ public class ChartResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String showLineChart() {
-
+    public Response showLineChart() {
         try {
-          //  String chartImage = FACADE.postHttpResponse("https://quickchart.io/chart?cht=bvg&chd=t:10,20,30,40&chs=500x300");
-
-
-            return null;
+          String chartImage = FACADE.getHttpResponse("https://quickchart.io/chart?cht=bvg&chd=t:10,20,30,40&chs=500x300");
+            System.out.println("this is supposed to be the chart image - is it? " + chartImage);
+            return Response.ok().entity(chartImage).build();
         } catch (Exception e) {
             e.printStackTrace();
-            return "No chart found";
+            return Response.serverError().entity("Failed to create chart").build();
         }
     }
 

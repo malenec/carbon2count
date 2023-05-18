@@ -3,6 +3,7 @@ package facades;
 import dtos.GroceryListDTO;
 import dtos.UserDTO;
 import entities.*;
+import utils.EMF_Creator;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,6 +15,9 @@ public class GroceryListFacade {
 
     private static GroceryListFacade instance;
     private static EntityManagerFactory emf;
+
+    private GroceryListFacade() {
+    }
 
     public static GroceryListFacade getGroceryListFacade(EntityManagerFactory _emf) {
         if (instance == null) {
@@ -62,12 +66,17 @@ public class GroceryListFacade {
         return em.find(User.class, username);
     }
 
-    public List<GroceryListDTO> getAllGroceryListsByUsername(String username) {
+    public static List<GroceryListDTO> getAllGroceryListsByUsername(String username) {
         EntityManager em = emf.createEntityManager();
         TypedQuery<GroceryList> groceryLists = em.createQuery("SELECT g FROM GroceryList g WHERE g.user.userName = :username", GroceryList.class);
         groceryLists.setParameter("username", username);
         List<GroceryList> groceryLists1 = groceryLists.getResultList();
         return GroceryListDTO.getDtos(groceryLists1);
+    }
+
+    public static void main(String[] args) {
+        emf = EMF_Creator.createEntityManagerFactory();
+        getAllGroceryListsByUsername("user");
     }
 
 //    public static List<GroceryListDTO> getAllGroceriesLists(){

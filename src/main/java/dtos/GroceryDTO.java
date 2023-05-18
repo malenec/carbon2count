@@ -83,4 +83,21 @@ public class GroceryDTO {
     public Double getTotalKgCo2EqKg() {
         return totalKgCo2EqKg;
     }
+
+    @Override
+    public String toString() {
+        return "GroceryDTO{" +
+                "idRa500prod='" + idRa500prod + '\'' +
+                ", name='" + name + '\'' +
+                ", dskCategory='" + dskCategory + '\'' +
+                ", unit='" + unit + '\'' +
+                ", agriculture=" + agriculture +
+                ", iLUC=" + iLUC +
+                ", foodProcessing=" + foodProcessing +
+                ", packaging=" + packaging +
+                ", transport=" + transport +
+                ", retail=" + retail +
+                ", totalKgCo2EqKg=" + totalKgCo2EqKg +
+                '}';
+    }
 }

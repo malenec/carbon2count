@@ -47,14 +47,27 @@ public class GroceryFacade {
         return GroceryDTO.getDtos(groceries);
     }
 
+    public static GroceryDTO getGroceryById(String id) {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Grocery> grocery = em.createQuery("select g from Grocery g WHERE g.idRa500prod = :id", Grocery.class);
+        grocery.setParameter("id", id);
+        GroceryDTO groceryDTO1 = new GroceryDTO(grocery.getSingleResult());
+
+        return groceryDTO1;
+    }
+
 
 
 
     public static void main(String[] args) {
         emf = EMF_Creator.createEntityManagerFactory();
+       getGroceryById("Ra00468");
 
-        System.out.println(getAllGroceries().size());
     }
+
+
+
+
 
 
 }

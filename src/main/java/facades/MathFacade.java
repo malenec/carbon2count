@@ -23,7 +23,8 @@ public class MathFacade {
     private static MathFacade instance;
     private static EntityManagerFactory emf;
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
-    private static final GroceryFacade FACADE =  GroceryFacade.getGroceryFacade(EMF);
+    private static final GroceryFacade GROCERY_FACADE =  GroceryFacade.getGroceryFacade(EMF);
+    private static final GroceryListFacade GROCERYLIST_FACADE =  GroceryListFacade.getGroceryListFacade(EMF);
 
 
 
@@ -44,7 +45,9 @@ public class MathFacade {
         return emf.createEntityManager();
     }
 
-    public static ArrayList<MathDTO> createMathDTOS(List<GroceryListDTO> groceryListDTOS) throws Exception {
+    public ArrayList<MathDTO> createMathDTOS(String username) throws Exception {
+
+        List<GroceryListDTO> groceryListDTOS = GROCERYLIST_FACADE.getAllGroceryListsByUsername(username);
 
         ArrayList<MathDTO> mathDTOS = new ArrayList<>();
         for (GroceryListDTO groceryListDTO: groceryListDTOS) {
@@ -58,7 +61,7 @@ public class MathFacade {
             //System.out.println("id " + groceryLineDTO.getGroceryId());
             System.out.println("Quantity " + groceryLineDTO.getGroceryQuantity());
             //System.out.println("Kg " + FACADE.getGroceryById(groceryLineDTO.getGroceryId()).getTotalKgCo2EqKg() );
-           body += groceryLineDTO.getGroceryQuantity() + "*" + FACADE.getGroceryById(groceryLineDTO.getGroceryId()).getTotalKgCo2EqKg() + " + ";
+           body += groceryLineDTO.getGroceryQuantity() + "*" + GROCERY_FACADE.getGroceryById(groceryLineDTO.getGroceryId()).getTotalKgCo2EqKg() + " + ";
         }
         body += 0;
         String requestBody = "{\"expr\": \"" + body + "\"}";
@@ -108,16 +111,16 @@ public class MathFacade {
 
 
     public static void main(String[] args) throws Exception {
-        emf = EMF_Creator.createEntityManagerFactory();
+//        emf = EMF_Creator.createEntityManagerFactory();
 
-        GroceryListFacade groceryListFacade = GroceryListFacade.getGroceryListFacade(emf);
+//        GroceryListFacade groceryListFacade = GroceryListFacade.getGroceryListFacade(emf);
 
 
-        ArrayList<MathDTO> mdto = createMathDTOS(groceryListFacade.getAllGroceryListsByUsername("user"));
+//        ArrayList<MathDTO> mdto = createMathDTOS(groceryListFacade.getAllGroceryListsByUsername("user"));
 
-        System.out.println("test");
-        System.out.println(mdto);
-        System.out.println("test");
+//        System.out.println("test");
+//        System.out.println(mdto);
+//        System.out.println("test");
     }
 }
 

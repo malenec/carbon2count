@@ -19,8 +19,8 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.net.http.HttpRequest.BodyPublishers;
+import java.util.List;
 
-import static facades.MathFacade.createMathDTOS;
 
 public class ChartFacade {
 
@@ -88,7 +88,34 @@ public class ChartFacade {
         return response.body();
     }
 
-    public static byte[] postChartImage(String requestBody) throws Exception {
+    public static byte[] postChartImage(List<MathDTO> mathDTOS) throws Exception {
+
+
+        ArrayList<String> kategorier = new ArrayList<>();
+        ArrayList<String> co2 = new ArrayList<>();
+
+        for (MathDTO mathDTO: mathDTOS) {
+
+            kategorier.add("'" + mathDTO.getCreated() + "'");
+            co2.add(String.valueOf(mathDTO.getGroceryListTotalCo2()));
+
+        }
+
+        String requestBody = "{\"backgroundColor\": \"transparent\","
+                + "\"width\": 500,"
+                + "\"height\": 300,"
+                + "\"format\": \"png\","
+                + "\"chart\": \"{type:'line',data:{labels:" + kategorier + ",datasets:[{label:'Dogs',data:" + co2 + "}]},options:{scales:{yAxes:[{ticks:{callback:function(value){return'$'+value;}}}]}}}\""
+                + "}";
+
+//        String requestBody = "{\"backgroundColor\": \"transparent\","
+//                + "\"width\": 500,"
+//                + "\"height\": 300,"
+//                + "\"format\": \"png\","
+//                + "\"chart\": \"{type:'line',data:{labels:['January','February','March','April','May'],datasets:[{label:'Dogs',data:[50,100,70,180,190]}]},options:{scales:{yAxes:[{ticks:{callback:function(value){return'$'+value;}}}]}}}\""
+//                + "}";
+//
+
         // Construct the QuickChart.io URL
         String quickChartUrl = "https://quickchart.io/chart";
 
@@ -145,15 +172,19 @@ public class ChartFacade {
 
 
     public static void main(String[] args) throws Exception {
-        emf = EMF_Creator.createEntityManagerFactory();
+//        emf = EMF_Creator.createEntityManagerFactory();
 
-        GroceryListFacade groceryListFacade = GroceryListFacade.getGroceryListFacade(emf);
+        ArrayList<String> frugt = new ArrayList<>();
+        frugt.add("'æble'");
+        frugt.add("'pære'");
+        frugt.add("banan");
+        frugt.add("appelsin");
 
+        System.out.println(frugt);
 
-//        ArrayList<MathDTO> mdto = createMathDTOS(groceryListFacade.getAllGroceryListsByUsername("user"));
 
         System.out.println("test");
-//        System.out.println(mdto);
+
         System.out.println("test");
     }
 }

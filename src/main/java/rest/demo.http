@@ -110,3 +110,6 @@ Content-Type: application/json
   "chart": "{type:'bar',data:{labels:['January','February','March','April','May'],datasets:[{label:'Dogs',data:[50,60,70,180,190]}]},options:{scales:{yAxes:[{ticks:{callback:function(value){return'$'+value;}}}]}}}"
 }
 
+###
+
+GET http://localhost:8080/carbon2count/api/chart/user

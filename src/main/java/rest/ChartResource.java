@@ -22,6 +22,7 @@ public class ChartResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+
     public String getChartImage() {
         try {
             String quickChartUrl = "https://quickchart.io/chart?cht=bvg&chd=t:10,20,30,40&chs=500x300";
@@ -32,6 +33,7 @@ public class ChartResource {
         } catch (Exception e) {
             e.printStackTrace();
             return "{\"error\":\"No chart found\"}";
+
         }
     }
 

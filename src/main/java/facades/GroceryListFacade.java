@@ -66,7 +66,7 @@ public class GroceryListFacade {
         return em.find(User.class, username);
     }
 
-    public static List<GroceryListDTO> getAllGroceryListsByUsername(String username) {
+    public List<GroceryListDTO> getAllGroceryListsByUsername(String username) {
         EntityManager em = emf.createEntityManager();
         TypedQuery<GroceryList> groceryLists = em.createQuery("SELECT g FROM GroceryList g WHERE g.user.userName = :username", GroceryList.class);
         groceryLists.setParameter("username", username);
@@ -74,10 +74,10 @@ public class GroceryListFacade {
         return GroceryListDTO.getDtos(groceryLists1);
     }
 
-    public static void main(String[] args) {
-        emf = EMF_Creator.createEntityManagerFactory();
-        getAllGroceryListsByUsername("user");
-    }
+//    public static void main(String[] args) {
+//        emf = EMF_Creator.createEntityManagerFactory();
+//        getAllGroceryListsByUsername("user");
+//    }
 
 //    public static List<GroceryListDTO> getAllGroceriesLists(){
 //        EntityManager em = emf.createEntityManager();

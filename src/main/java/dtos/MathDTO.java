@@ -13,16 +13,12 @@ public class MathDTO {
 
     public MathDTO(String result) {
         this.groceryListTotalCo2 = Double.parseDouble(result);
-
-
     }
-
 
 
     public String getCreated() {
         return created;
     }
-
 
     public double getGroceryListTotalCo2() {
         return groceryListTotalCo2;

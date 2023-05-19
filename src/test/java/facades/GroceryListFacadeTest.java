@@ -52,11 +52,8 @@ public class GroceryListFacadeTest {
 
         } finally {
             em.close();
-
         }
-
         userDTO1 = new UserDTO(user1);
-
     }
 
     @AfterAll
@@ -90,7 +87,6 @@ public class GroceryListFacadeTest {
         GroceryListDTO facadeGroceryList = facade.createGroceryList(userDTO1, groceryListDTO);
 
         assertEquals("Ra00468", facadeGroceryList.getGroceryLineDTOs().get(0).getGroceryId());
-
     }
 
 
@@ -130,16 +126,12 @@ public class GroceryListFacadeTest {
 
         } finally {
             em.close();
-
         }
-
         int expected = 3;
         int actual = facade.getAllGroceryListsByUsername(user1.getUserName()).size();
 
         System.out.println("Here is the size of the list of lists: " + actual);
 
         assertEquals(expected, actual);
-
     }
-
 }

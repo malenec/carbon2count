@@ -88,7 +88,7 @@ public class ChartFacade {
         return response.body();
     }
 
-    public static byte[] postChartImage(List<MathDTO> mathDTOS) throws Exception {
+    public byte[] postChartImage(List<MathDTO> mathDTOS) throws Exception {
 
 
         ArrayList<String> kategorier = new ArrayList<>();
@@ -107,14 +107,6 @@ public class ChartFacade {
                 + "\"format\": \"png\","
                 + "\"chart\": \"{type:'line',data:{labels:" + kategorier + ",datasets:[{label:'Samlet CO2 udledning',data:" + co2 + ", backgroundColor: 'rgb(75, 192, 192)', borderColor: 'rgb(75, 192, 192)', fill: false, pointRadius: 5, pointHoverRadius: 30}]},options:{scales:{yAxes:[{ticks:{callback:function(value){return+value+'kg CO2';}}}]}}}\""
                 + "}";
-
-//        String requestBody = "{\"backgroundColor\": \"transparent\","
-//                + "\"width\": 500,"
-//                + "\"height\": 300,"
-//                + "\"format\": \"png\","
-//                + "\"chart\": \"{type:'line',data:{labels:['January','February','March','April','May'],datasets:[{label:'Dogs',data:[50,100,70,180,190]}]},options:{scales:{yAxes:[{ticks:{callback:function(value){return'$'+value;}}}]}}}\""
-//                + "}";
-//
 
         // Construct the QuickChart.io URL
         String quickChartUrl = "https://quickchart.io/chart";

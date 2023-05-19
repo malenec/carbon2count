@@ -19,47 +19,9 @@ import java.util.List;
 public class ChartResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
-
     private static final ChartFacade CHART_FACADE = ChartFacade.getChartFacade(EMF);
     private static final MathFacade MATH_FACADE = MathFacade.getMathFacade(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//
-//    public String getChartImage() {
-//        try {
-//            String quickChartUrl = "https://quickchart.io/chart?cht=bvg&chd=t:10,20,30,40&chs=500x300";
-//            byte[] chartImageBytes = FACADE.getChartImage(quickChartUrl);
-//            String chartImageData = Base64.getEncoder().encodeToString(chartImageBytes);
-//
-//            return "{\"chartImageData\":\"" + chartImageData + "\"}";
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return "{\"error\":\"No chart found\"}";
-//
-//        }
-//    }
-
-//    @POST
-//    @Produces("image/png")
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response createChart(String requestData) {
-//        try {
-//            String chartImage = FACADE.postHttpResponse("https://quickchart.io/chart", requestData);
-//            return Response.ok().entity(chartImage).build();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return Response.serverError().entity("Failed to create chart").build();
-//        }
-//    }
-
-//    String requestBody = "{\"backgroundColor\": \"transparent\","
-//            + "\"width\": 500,"
-//            + "\"height\": 300,"
-//            + "\"format\": \"png\","
-//            + "\"chart\": \"{type:'bar',data:{labels:['January','February','March','April','May'],datasets:[{label:'Dogs',data:[50,60,70,180,190]}]},options:{scales:{yAxes:[{ticks:{callback:function(value){return'$'+value;}}}]}}}\""
-//            + "}";
 
 
     @GET
@@ -85,6 +47,22 @@ public class ChartResource {
         }
     }
 }
+
+
+
+
+//    @POST
+//    @Produces("image/png")
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public Response createChart(String requestData) {
+//        try {
+//            String chartImage = FACADE.postHttpResponse("https://quickchart.io/chart", requestData);
+//            return Response.ok().entity(chartImage).build();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return Response.serverError().entity("Failed to create chart").build();
+//        }
+//    }
 
 
 

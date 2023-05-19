@@ -29,7 +29,6 @@ public class GroceryFacade {
         return emf.createEntityManager();
     }
 
-
     public long getGroceryCount(){
         EntityManager em = getEntityManager();
         try{
@@ -40,14 +39,14 @@ public class GroceryFacade {
         }
     }
 
-    public static List<GroceryDTO> getAllGroceries(){
+    public List<GroceryDTO> getAllGroceries(){
         EntityManager em = emf.createEntityManager();
         TypedQuery<Grocery> grocery = em.createQuery("SELECT g FROM Grocery g", Grocery.class);
         List<Grocery> groceries = grocery.getResultList();
         return GroceryDTO.getDtos(groceries);
     }
 
-    public static GroceryDTO getGroceryById(String id) {
+    public  GroceryDTO getGroceryById(String id) {
         EntityManager em = emf.createEntityManager();
         TypedQuery<Grocery> grocery = em.createQuery("select g from Grocery g WHERE g.idRa500prod = :id", Grocery.class);
         grocery.setParameter("id", id);
@@ -56,18 +55,10 @@ public class GroceryFacade {
         return groceryDTO1;
     }
 
-
-
-
     public static void main(String[] args) {
         emf = EMF_Creator.createEntityManagerFactory();
-       getGroceryById("Ra00468");
+       //getGroceryById("Ra00468");
 
     }
-
-
-
-
-
 
 }

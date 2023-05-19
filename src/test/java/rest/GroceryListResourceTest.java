@@ -104,11 +104,8 @@ public class GroceryListResourceTest {
 
         } finally {
             em.close();
-
         }
-
         userDTO1 = new UserDTO(user1);
-
     }
 
     @Test
@@ -168,7 +165,6 @@ public class GroceryListResourceTest {
 
         } finally {
             em.close();
-
         }
 
         given()

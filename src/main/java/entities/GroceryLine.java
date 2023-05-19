@@ -25,7 +25,6 @@ public class GroceryLine {
     @JoinColumn(name = "grocery_id")
     private Grocery grocery;
 
-
     @Column(name = "grocery_quantity")
     private Long groceryQuantity;
 

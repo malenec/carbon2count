@@ -27,11 +27,9 @@ public class MathFacade {
     private static final GroceryListFacade GROCERYLIST_FACADE =  GroceryListFacade.getGroceryListFacade(EMF);
 
 
-
     //Private Constructor to ensure Singleton
     private MathFacade() {
     }
-
 
     public static MathFacade getMathFacade(EntityManagerFactory _emf) {
         if (instance == null) {
@@ -94,33 +92,13 @@ public class MathFacade {
 
             // extract result variable as an integer from response body
 
-
-
-
             response.body();
-
 
             // Parse and process the response as needed
         }
             //"Request failed with status code: " + response.statusCode();
         }
         return mathDTOS;
-    }
-
-
-
-
-    public static void main(String[] args) throws Exception {
-//        emf = EMF_Creator.createEntityManagerFactory();
-
-//        GroceryListFacade groceryListFacade = GroceryListFacade.getGroceryListFacade(emf);
-
-
-//        ArrayList<MathDTO> mdto = createMathDTOS(groceryListFacade.getAllGroceryListsByUsername("user"));
-
-//        System.out.println("test");
-//        System.out.println(mdto);
-//        System.out.println("test");
     }
 }
 

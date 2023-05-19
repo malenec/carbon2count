@@ -20,7 +20,6 @@ public class SetupTestUsers {
 //    // Also, either delete this file, when users are created or rename and add to .gitignore
 //    // Whatever you do DO NOT COMMIT and PUSH with the real passwords
 
-
 //        STEP 1: CREATES USERS *REMEMBER DROP & CREATE IF YOU'VE MADE CHANGES TO THE USER CLASS IN ENTITIES*
 //    User user = new User("user", "test123");
 //    User admin = new User("admin", "test123");

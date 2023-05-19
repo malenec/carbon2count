@@ -24,7 +24,6 @@ import java.util.List;
 public class GroceryListResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
-
     private static final GroceryListFacade FACADE =  GroceryListFacade.getGroceryListFacade(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
@@ -50,7 +49,6 @@ public class GroceryListResource {
             GroceryListDTO groceryListDTO2 = new GroceryListDTO(groceryLineDTOList);
             FACADE.createGroceryList(userDTO, groceryListDTO2);
 
-
             return Response.ok().entity(groceryListDTO2).build();
         } catch (Exception e) {
             e.printStackTrace();
@@ -75,65 +73,4 @@ public class GroceryListResource {
                     .build();
         }
     }
-
-//    @POST
-//    @Path("create")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response createGroceryLine(String jsonString) {
-//
-//        try {
-//            GroceryListDTO groceryListDTO = GSON.fromJson(jsonString, GroceryListDTO.class);
-//
-//            for (GroceryLineDTO groceryLineDTO : groceryListDTO.getGroceryLineDTOs()) {
-//                System.out.println(groceryLineDTO);
-//            }
-//            return Response.ok().entity("Grocery lines created successfully").build();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return Response.status(Response.Status.BAD_REQUEST)
-//                    .entity("Failed to create grocery lines. Error: " + e.getMessage())
-//                    .build();
-//        }
-//    }
-
-
-
-
-
-
-
-
 }
-
-//
-//    @POST
-//    @Path("create")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response createGroceryLine(String jsonString) {
-//
-//        List<GroceryLineDTO> groceryLineDTOList = new ArrayList<>();
-//
-//        try {
-//            GroceryListDTO groceryListDTO = GSON.fromJson(jsonString, GroceryListDTO.class);
-//            User user = FACADE.getUser(groceryListDTO.getUserName());
-//            UserDTO userDTO = new UserDTO(user);
-//
-//            for (GroceryLineDTO groceryLineDTO : groceryListDTO.getGroceryLineDTOs()){
-//                System.out.println(groceryLineDTO);
-//                groceryLineDTOList.add(groceryLineDTO);
-//            }
-//
-//            GroceryListDTO groceryListDTO2 = new GroceryListDTO(groceryLineDTOList);
-//            FACADE.createGroceryList(userDTO, groceryListDTO2);
-//
-//
-//            return Response.ok().entity(groceryListDTO2).build();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return Response.status(Response.Status.BAD_REQUEST)
-//                    .entity("Failed to create grocery lines. Error: " + e.getMessage())
-//                    .build();
-//        }
-//    }

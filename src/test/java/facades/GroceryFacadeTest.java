@@ -26,7 +26,4 @@ public class GroceryFacadeTest {
     public void testGetAllGroceries() {
         assertEquals(facade.getAllGroceries().size(), facade.getGroceryCount(), "Expects 499 rows in the database");
     }
-
-
-
 }
